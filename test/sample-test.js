@@ -1,6 +1,5 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-require("chai").use(require("chai-bignumber")(web3.BigNumber)).should();
 
 describe("Funding", function() {
   const ETHERS = 10**18;
