@@ -21,9 +21,15 @@ describe("Funding", function() {
     const donations = await Donations.deploy();
     await donations.deployed();
 
+    let balance = await web3.eth.getBalance(donations.address)
+    expect(balance).to.be.eq('0');
+
     await donations.Donate({
       value: ETHERS * 0.003,
       gasPrice: GAS_PRICE
     });
+
+    balance = await web3.eth.getBalance(donations.address)
+    expect(balance).to.be.eq('3000000000000000');
   });
 });
