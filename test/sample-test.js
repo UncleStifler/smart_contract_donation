@@ -29,6 +29,6 @@ describe("Funding", function() {
     });
 
     balance = await web3.eth.getBalance(donations.address)
-    expect(balance).to.be.eq('3000000000000000');
+    expect(balance).to.be.eq('' + ETHERS * 0.003);
   });
 });
