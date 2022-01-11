@@ -49,6 +49,7 @@ contract Donations {
   }
 
   function getDonatorByIndex(uint index) public view returns(address) {
+    require(index < donators.length, "Index is out of range");
     return donators[index];
   }
 }
