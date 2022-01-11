@@ -43,4 +43,12 @@ contract Donations {
 
     return flag;
   }
+
+  function getDonatorsLength() public view returns(uint) {
+    return donators.length;
+  }
+
+  function getDonatorByIndex(uint index) public view returns(address) {
+    return donators[index];
+  }
 }
