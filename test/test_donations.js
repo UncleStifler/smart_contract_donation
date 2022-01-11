@@ -50,19 +50,6 @@ describe("Funding", function() {
     expect(endBalance).to.be.eq('' + expectedBalance);
   });
 
-  // it("check contract has donators addresses", async () => {
-  //   var length = contract.getDonatorsLength();
-
-  //   let donator;
-
-  //   for(var i = 0; i < length; i++){
-  //     donator = await contract.getDonatorByIndex(i+10);
-  //     signer = signers[i].getAddress()
-
-  //     expect(donator).to.be.eq(signer);
-  //   }
-  // });
-
   it("transfer donations from contract", async () => {
     let startContrBalance = await getContractBalance(contract);
     expect(startContrBalance).to.not.be.eq('0');
