@@ -6,8 +6,6 @@ contract Donations {
   address[] public donators;
   mapping(address => uint) public donations;
 
-  event Donated(uint donation);
-
   constructor() {
     owner = payable(msg.sender);
   }
@@ -23,8 +21,6 @@ contract Donations {
     else{
       donations[msg.sender] += msg.value;
     }
-
-    emit Donated(msg.value);
   }
 
   function transferDonates() external {
