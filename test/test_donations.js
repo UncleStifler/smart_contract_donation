@@ -46,7 +46,6 @@ describe("Funding", function() {
   });
 
   it("check contract has donators addresses", async () => {
-    const addrs = await ethers.getSigners();
     var length = contract.getDonatorsLength();
 
     for(var i = 0; i < length; i++){
