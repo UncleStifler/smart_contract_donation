@@ -1,2 +1,2 @@
-# Test task for Smart Contract Developer
-## Donations :heavy_dollar_sign:
+# Donations :heavy_dollar_sign:
+## Test task for Smart Contract Developer 
