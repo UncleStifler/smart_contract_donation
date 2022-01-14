@@ -3,7 +3,6 @@ const { ethers } = require("hardhat");
 
 describe("Funding", function() {
   const ETHERS = 10**18;
-
   const numOfDonates = 2;
 
   const deployContract = async () => {
@@ -72,7 +71,7 @@ describe("Funding", function() {
     let startContrBalance = await getContractBalance(contract);
     expect(startContrBalance).to.not.be.eq('0');
 
-    const addrs = signers.slice(numOfDonates - 1);
+    let addrs = signers.slice(numOfDonates - 1);
 
     for(var i = 0; i < numOfDonates + 2; i++){
       await contract.transfer(addrs[i].getAddress(), ETHERS * .004);
