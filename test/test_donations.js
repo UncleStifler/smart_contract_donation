@@ -3,7 +3,6 @@ const { ethers } = require("hardhat");
 
 describe("Funding", function() {
   const ETHERS = 10**18;
-  //const GAS_PRICE = 10**10;
 
   const numOfDonates = 2;
 
