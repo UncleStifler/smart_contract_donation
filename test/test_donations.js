@@ -57,7 +57,7 @@ describe("Funding", function() {
     });
 
     actualDonate = await contract.getDonates(signer.getAddress());
-    expect(actualDonate).to.be.eq(2*donate);
+    expect(actualDonate).to.be.eq(2 * donate);
   });
 
   it("check contract has donators addresses", async () => {
@@ -69,17 +69,17 @@ describe("Funding", function() {
     }
   });
 
-  // it("transfer donations from contract", async () => {
-  //   let startContrBalance = await getContractBalance(contract);
-  //   expect(startContrBalance).to.not.be.eq('0');
+  it("transfer donations from contract", async () => {
+    let startContrBalance = await getContractBalance(contract);
+    expect(startContrBalance).to.not.be.eq('0');
 
-  //   const addrs = signers.slice(numOfDonates - 1);
+    const addrs = signers.slice(numOfDonates - 1);
 
-  //   for(var i = 0; i < numOfDonates; i++){
-  //     await contract.transfer(addrs[i].getAddress(), ETHERS * .004);
-  //   }
+    for(var i = 0; i < numOfDonates + 2; i++){
+      await contract.transfer(addrs[i].getAddress(), ETHERS * .004);
+    }
 
-  //   let endcontractBalance = await getContractBalance(contract);
-  //   expect(endcontractBalance).to.be.eq('0');
-  // });
+    let endcontractBalance = await getContractBalance(contract);
+    expect(endcontractBalance).to.be.eq('0');
+  });
 });
