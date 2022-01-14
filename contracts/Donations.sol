@@ -3,19 +3,15 @@ pragma solidity ^0.8.0;
 
 contract Donations {
   address payable public owner;
-  address[] public donators;
   mapping(address => uint) public donations;
-
+  
   constructor() {
     owner = payable(msg.sender);
   }
 
-  function Donate() public payable {
+  function donate() public payable {
     // Make donation
-    require(msg.value > .001 ether, "Minimal donation is 0.001 ETH");
-
     if(!inDonaters(msg.sender)){
-      donators.push(msg.sender);
       donations[msg.sender] = msg.value;
     }
     else{
@@ -23,29 +19,19 @@ contract Donations {
     }
   }
 
-  function transferDonates() external {
+  function transfer(address payable _addr, uint _amount) external {
     // Transfer donates ONLY to contract owner
     require(msg.sender == owner, "You have no permission to get donates");
-    owner.transfer(address(this).balance);
+    _addr.transfer(_amount);
   }
 
-  function inDonaters(address sender) private view returns(bool) {
+  function inDonaters(address _addr) public view returns(bool) {
     // If donater have already donated, returns TRUE
-    bool flag = false;
-
-    for(uint i = 0; i < donators.length; i++){
-      if(donators[i] == sender) flag = true;
-    }
-
-    return flag;
+    return donations[_addr] > 0;
   }
 
-  function getDonatorsLength() public view returns(uint) {
-    return donators.length;
-  }
-
-  function getDonatorByIndex(uint index) public view returns(address) {
-    require(index < donators.length, "Index is out of range");
-    return donators[index];
+  function getDonates(address _addr) public view returns(uint) {
+    // to get total amount of donates by address
+    return donations[_addr];
   }
 }
